@@ -43,34 +43,3 @@ userMessages$.subscribe(message => {
     console.log("message2", message)
     sendMessage(message)
 });
-
-
-
-/*
-// Observable for user messages (when the user submits a form)
-const userMessages$ = submitEvents$.pipe(
-    // Send the message to the WebSocket server
-    tap((message) => {
-        sendMessage(message); // Send to WebSocket server
-    }),
-    shareReplay() // Share the message stream between all subscribers
-);
-
-// Observable for merged messages (user's sent and received messages)
-const messages$ = merge(userMessages$, serverMessages$).pipe(
-    // Ensuring messages are shared between subscribers
-    shareReplay()
-);
-
-// Subscribe to messages$ and update the UI with new messages
-messages$.subscribe((message) => {
-    const newMessage = document.createElement("li");
-    newMessage.innerHTML = `
-        <div>
-            <p class="message-text">${message.data}</p>
-            <p class="message-date">${message.action} ${new Date(message.timestamp).toLocaleString()}</p>
-        </div>
-    `;
-    newMessage.classList.add(message.action); // Add class based on action (sent/received)
-    document.getElementById("messages")!.appendChild(newMessage);
-});*/
